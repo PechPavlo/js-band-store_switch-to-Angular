@@ -1,5 +1,23 @@
 <div>
   <h1>JS Band Store</h1>
+  <nav>
+    <ul>
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li><a routerLink="catalog" routerLinkActive="active">Catalog</a></li>
+      <li>
+        <a [routerLink]="['details', 1]" routerLinkActive="active">Details</a>
+      </li>
+      <li><a routerLink="cart" routerLinkActive="active">Cart</a></li>
+    </ul>
+  </nav>
 </div>
-
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+</div>
