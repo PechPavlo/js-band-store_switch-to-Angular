@@ -9,6 +9,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from './card/card.component';
 import { AppRoutingModule } from '../../app-routing.module';
+import { BooksService } from 'src/app/shared/services/books.service';
 
 @NgModule({
   declarations: [CatalogComponent, HeaderComponent, CardComponent],
@@ -22,6 +23,6 @@ import { AppRoutingModule } from '../../app-routing.module';
     AppRoutingModule,
   ],
   exports: [CatalogComponent, HeaderComponent, CardComponent],
-  providers: [],
+  providers: [BooksService],
 })
 export class CatalogModule {}
