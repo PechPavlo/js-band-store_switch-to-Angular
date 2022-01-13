@@ -6,8 +6,9 @@
       routerLink="/login"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
+      (click)="logout()"
     >
-      Sign Out
+      Log Out
     </button>
   </div>
   <hr />

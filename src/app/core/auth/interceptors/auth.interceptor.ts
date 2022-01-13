@@ -6,21 +6,24 @@ import {
   HttpHandler,
   HttpRequest,
 } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
-@Injectable()
-// @Injectable({
-//   providedIn: 'root',
-// })
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthInterceptor implements HttpInterceptor {
+  constructor(private auth: AuthService) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const authHeader = 'Bearer 1A2b3C4d5E6f7G8h9IAgBKClD';
-
-    const authReq = req.clone({
-      headers: req.headers.set('Authorization', authHeader),
-    });
+    const token = this.auth.user$.value?.token;
+    if (token) {
+      const authReq = req.clone({
+        headers: req.headers.set('authorization', `Bearer ${token}`),
+      });
+      return next.handle(authReq);
+    }
     return next.handle(req);
   }
 }

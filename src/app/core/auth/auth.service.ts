@@ -11,7 +11,6 @@ import { AUTH_URL } from './constants/api-urls';
 })
 export class AuthService {
   public user$ = new BehaviorSubject<IUser | null>(null);
-  public isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -20,12 +19,10 @@ export class AuthService {
       catchError((error) => (console.log(error), of(error))),
       tap((user: IUser) => {
         this.user$.next(user);
-        this.isLoggedIn = true;
       })
     );
   }
   public logout() {
     this.user$.next(null);
-    this.isLoggedIn = false;
   }
 }

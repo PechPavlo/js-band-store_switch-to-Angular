@@ -20,4 +20,7 @@ export class HeaderComponent implements OnInit {
       this.userName = user?.username;
     });
   }
+  logout() {
+    this._auth.logout();
+  }
 }
