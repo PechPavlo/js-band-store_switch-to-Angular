@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +7,17 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  userName: string = '';
-  constructor(private localStorageService: LocalstorageService) {}
+  userName: string | undefined = '';
+
+  constructor(private _auth: AuthService) {}
 
   ngOnInit(): void {
     this.getUserName();
   }
 
   getUserName() {
-    this.userName = this.localStorageService.getLocalData()?.username;
+    this._auth.user$.subscribe((user) => {
+      this.userName = user?.username;
+    });
   }
 }

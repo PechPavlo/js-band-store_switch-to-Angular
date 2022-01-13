@@ -4,27 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { CatalogComponent } from './catalog/catalog.component';
+// import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './modules/login/login.component';
+import { CatalogComponent } from './modules/catalog/components/catalog.component';
 import { DetailsComponent } from './details/details.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './modules/cart/cart.component';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CardComponent } from './catalog/card/card.component';
-import { LocalstorageService } from './services/localstorage.service';
-import { CatalogService } from './catalog/catalog.service';
-import { AuthService } from './auth/auth.service';
-import { HeaderComponent } from './catalog/header/header.component';
-
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+// import { LocalstorageService } from './services/localstorage.service';
+import { CatalogService } from './modules/catalog/catalog.service';
+import { AuthModule } from './core/auth/auth.module';
+import { CatalogModule } from './modules/catalog/catalog.module';
 
 const appRoutes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', component: LoginComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent },
@@ -33,28 +28,22 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    CatalogComponent,
+    LoginComponent,
     DetailsComponent,
     CartComponent,
     PageNotFoundComponent,
-    CardComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatCardModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
+    AuthModule,
+    CatalogModule,
   ],
-  providers: [LocalstorageService, CatalogService, AuthService],
+  providers: [CatalogService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

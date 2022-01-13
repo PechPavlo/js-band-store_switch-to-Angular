@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="main">
+  <div class="main-controls">
+    <div>
+      <form class="search-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Number</mat-label>
+          <input
+            type="text"
+            placeholder="search"
+            aria-label="search"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <label htmlFor="price-filter">
+      <select id="price-filter">
+        <option value="0:Infinity ">Price</option>
+        <option value="0:25">0 < price < 25</option>
+        <option value="25:50">25 < price < 50</option>
+        <option value="50:Infinity ">price > 50</option>
+      </select>
+    </label>
+  </div>
+</div>
+<div *ngIf="books.length > 0; else isloading" class="main-content">
+  <ul class="book-list">
+    <app-card *ngFor="let book of filteredBooks" [book]="book"></app-card>
+  </ul>
+</div>
+<ng-template #isloading>
+  <span>Loading...</span>
+</ng-template>

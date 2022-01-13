@@ -1,4 +1,4 @@
-export interface Book {
+export interface IBook {
   id: String;
   count: Number;
   price: Number;

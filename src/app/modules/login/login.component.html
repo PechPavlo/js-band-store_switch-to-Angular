@@ -15,8 +15,8 @@
           type="text"
           required=""
           value=""
-          [(ngModel)]="userNameToAuthorize" /></label
-      ><button type="button" (click)="getToken()" [disabled]="isAuthorizing">
+          [(ngModel)]="userName" /></label
+      ><button type="button" (click)="login()" [disabled]="isAuthorizing">
         Log In
       </button>
     </form>

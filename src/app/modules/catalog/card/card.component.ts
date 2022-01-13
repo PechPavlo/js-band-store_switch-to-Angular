@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Book } from '../catalog';
+import { IBook } from '../interfaces/book.interface';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +7,7 @@ import { Book } from '../catalog';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() book: Book | undefined;
+  @Input() book: IBook | undefined;
 
   constructor() {}
 
