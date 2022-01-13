@@ -32,7 +32,7 @@ export class CatalogService {
       catchError((error) => {
         if (error?.error?.message === 'Unauthorized') {
           console.log('User is Unauthorized');
-          this.router.navigate(['/']);
+          this.router.navigate(['/login']);
         }
         return throwError(error);
       })
