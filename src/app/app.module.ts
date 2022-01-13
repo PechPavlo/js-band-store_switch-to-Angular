@@ -4,18 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/login/login.component';
-import { DetailsComponent } from './details/details.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+
 import { AuthModule } from './core/auth/auth.module';
 import { CatalogModule } from './modules/catalog/catalog.module';
+import { DetailsModule } from './modules/details/details.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DetailsComponent,
     CartComponent,
     PageNotFoundComponent,
   ],
@@ -26,6 +26,7 @@ import { CatalogModule } from './modules/catalog/catalog.module';
     BrowserAnimationsModule,
     AuthModule,
     CatalogModule,
+    DetailsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

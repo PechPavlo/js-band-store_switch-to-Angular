@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IBook } from '../interfaces/book.interface';
+import { IBook } from '../../interfaces/book.interface';
 
 @Component({
   selector: 'app-card',
