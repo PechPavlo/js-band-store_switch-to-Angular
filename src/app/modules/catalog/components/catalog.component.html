@@ -36,7 +36,10 @@
 </div>
 <div *ngIf="books.length > 0; else isloading" class="main-content">
   <ul class="book-list">
-    <app-card *ngFor="let book of filteredBooks" [book]="book"></app-card>
+    <app-card
+      *ngFor="let book of filteredBooks | catalogFilter: 'ap'"
+      [book]="book"
+    ></app-card>
   </ul>
 </div>
 <ng-template #isloading>

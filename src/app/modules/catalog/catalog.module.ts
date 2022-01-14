@@ -10,9 +10,10 @@ import { CardComponent } from './card/components/card.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { HeaderModule } from 'src/app/shared/header/header.module';
+import { CatalogFilterPipe } from './pipes/catalog-filter.pipe';
 
 @NgModule({
-  declarations: [CatalogComponent, CardComponent],
+  declarations: [CatalogComponent, CardComponent, CatalogFilterPipe],
   imports: [
     CommonModule,
     HeaderModule,

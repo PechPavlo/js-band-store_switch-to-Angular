@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +9,19 @@ import { AuthService } from '../../core/auth/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userName: string = '';
+  userName = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(16),
+  ]);
   isAuthorizing: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {}
 
   login(): void {
     this.isAuthorizing = true;
-    this.auth.login(this.userName);
+    this.auth.login(this.userName.value);
   }
 }

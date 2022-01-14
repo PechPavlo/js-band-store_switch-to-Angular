@@ -15,8 +15,18 @@
           type="text"
           required=""
           value=""
-          [(ngModel)]="userName" /></label
-      ><button type="button" (click)="login()" [disabled]="isAuthorizing">
+          [formControl]="userName"
+        />
+        <span
+          *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+          class="name-error"
+          >Username is not valid</span
+        ></label
+      ><button
+        type="button"
+        (click)="login()"
+        [disabled]="userName.invalid || isAuthorizing"
+      >
         Log In
       </button>
     </form>

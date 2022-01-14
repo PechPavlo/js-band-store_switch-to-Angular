@@ -31,9 +31,10 @@ export class AuthService {
         }),
         tap((user: IUser) => {
           this.user$.next(user);
+          this.router.navigate(['/catalog']);
         })
       )
-      .subscribe(() => this.router.navigate(['/catalog']));
+      .subscribe();
   }
 
   public logout() {
