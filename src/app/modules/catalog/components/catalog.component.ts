@@ -22,7 +22,21 @@ export class CatalogComponent implements OnInit {
   constructor(private bookService: BooksService) {}
 
   ngOnInit(): void {
-    this.getBooks();
+    this.books = this.bookService.getBooks();
+
+    if (!this.books.length) {
+      this.getBooks();
+    }
+    this.options = this.books.map((book) => book.title.toString());
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        this.filteredBooks = this.books.filter((book) =>
+          book.title.toLowerCase().includes(value.toLowerCase())
+        );
+        return this._filter(value);
+      })
+    );
   }
 
   getBooks(): void {

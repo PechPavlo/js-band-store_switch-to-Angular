@@ -9,18 +9,17 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 export class HeaderComponent implements OnInit {
   userName: string | undefined = '';
 
-  constructor(private _auth: AuthService) {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     this.getUserName();
   }
 
   getUserName() {
-    this._auth.user$.subscribe((user) => {
-      this.userName = user?.username;
-    });
+    this.userName = this.auth.getUser()?.username;
   }
+
   logout() {
-    this._auth.logout();
+    this.auth.logout();
   }
 }

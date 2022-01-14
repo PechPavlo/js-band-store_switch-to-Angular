@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.isAuthorizing = true;
-    this.auth.login(this.userName).subscribe(() => {
-      this.isAuthorizing = false;
-      this.router.navigate(['/catalog']);
-    });
+    this.auth.login(this.userName);
   }
 }
