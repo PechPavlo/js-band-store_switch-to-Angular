@@ -1,43 +1,44 @@
 <app-header></app-header>
 <div class="main">
   <div class="main-controls">
-    <div>
-      <form class="search-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Number</mat-label>
-          <input
-            type="text"
-            placeholder="search"
-            aria-label="search"
-            matInput
-            [formControl]="myControl"
-            [matAutocomplete]="auto"
-          />
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option
-              *ngFor="let option of filteredOptions | async"
-              [value]="option"
-            >
-              {{ option }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-      </form>
-    </div>
+    <form class="search-form">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <input
+          matInput
+          type="text"
+          [formControl]="filterBySearch"
+          placeholder="search"
+        />
+        <button
+          *ngIf="filterBySearch.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="filterBySearch.setValue('')"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+
     <label htmlFor="price-filter">
-      <select id="price-filter">
-        <option value="0:Infinity ">Price</option>
-        <option value="0:25">0 < price < 25</option>
-        <option value="25:50">25 < price < 50</option>
-        <option value="50:Infinity ">price > 50</option>
+      <select id="price-filter" [formControl]="filterByPrice">
+        <option *ngFor="let range of priceOptions" [value]="range.value">
+          {{ range.title }}
+        </option>
       </select>
     </label>
   </div>
+  <span>{{ filterByPrice.value }}</span>
 </div>
 <div *ngIf="books.length > 0; else isloading" class="main-content">
   <ul class="book-list">
     <app-card
-      *ngFor="let book of filteredBooks | catalogFilter: 'ap'"
+      *ngFor="
+        let book of books
+          | catalogFilter: filterBySearch.value
+          | priceFilter: filterByPrice.value
+      "
       [book]="book"
     ></app-card>
   </ul>

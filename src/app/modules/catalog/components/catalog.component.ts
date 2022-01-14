@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 
 import { IBook } from '../interfaces/book.interface';
 import { BooksService } from 'src/app/shared/services/books.service';
@@ -13,11 +11,14 @@ import { BooksService } from 'src/app/shared/services/books.service';
 })
 export class CatalogComponent implements OnInit {
   books: IBook[] = [];
-  filteredBooks: IBook[] = [];
-
-  myControl = new FormControl();
-  options: string[] = [];
-  filteredOptions: Observable<string[]> | undefined;
+  priceOptions = [
+    { value: '0:Infinity', title: 'Price' },
+    { value: '0:25', title: '0 < price < 25' },
+    { value: '25:50', title: '25 < price < 50' },
+    { value: '50:Infinity', title: 'price > 50' },
+  ];
+  filterBySearch = new FormControl('');
+  filterByPrice = new FormControl(this.priceOptions[0].value);
 
   constructor(private bookService: BooksService) {}
 
@@ -27,39 +28,11 @@ export class CatalogComponent implements OnInit {
     if (!this.books.length) {
       this.getBooks();
     }
-    this.options = this.books.map((book) => book.title.toString());
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        this.filteredBooks = this.books.filter((book) =>
-          book.title.toLowerCase().includes(value.toLowerCase())
-        );
-        return this._filter(value);
-      })
-    );
   }
 
   getBooks(): void {
     this.bookService.getAllBooks().subscribe((books: IBook[]) => {
       this.books = books;
-      this.options = books.map((book) => book.title.toString());
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map((value) => {
-          this.filteredBooks = this.books.filter((book) =>
-            book.title.toLowerCase().includes(value.toLowerCase())
-          );
-          return this._filter(value);
-        })
-      );
     });
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    console.log(value);
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
   }
 }
