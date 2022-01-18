@@ -3,12 +3,7 @@
   <div class="main-controls">
     <form class="search-form">
       <mat-form-field class="example-form-field" appearance="fill">
-        <input
-          matInput
-          type="text"
-          [formControl]="filterBySearch"
-          placeholder="search"
-        />
+        <input matInput type="text" [formControl]="filterBySearch" />
         <button
           *ngIf="filterBySearch.value"
           matSuffix
@@ -18,6 +13,7 @@
         >
           <mat-icon>close</mat-icon>
         </button>
+        <mat-icon matSuffix *ngIf="!filterBySearch.value">search</mat-icon>
       </mat-form-field>
     </form>
 

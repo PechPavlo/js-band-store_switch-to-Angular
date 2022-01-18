@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CatalogComponent } from './components/catalog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -24,6 +25,7 @@ import { PriceFilterPipe } from './pipes/price-filter.pipe';
   imports: [
     CommonModule,
     HeaderModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,

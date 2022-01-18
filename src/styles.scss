@@ -136,6 +136,12 @@ button {
         -moz-box-shadow   : 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
         box-shadow        : 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     }
+
+    &:disabled {
+        cursor          : not-allowed;
+        color           : $btn_disabled-color;
+        background-color: $btn_disabled-background;
+    }
 }
 
 .hidden {
