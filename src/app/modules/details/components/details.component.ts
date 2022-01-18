@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BooksService } from 'src/app/shared/services/books.service';
+import { IBook } from '../../catalog/interfaces/book.interface';
 
 @Component({
   selector: 'app-details',
@@ -8,12 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
   bookId: number = 0;
+  book: IBook | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private booksService: BooksService
+  ) {}
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const bookIdFromRoute = Number(routeParams.get('id'));
     this.bookId = bookIdFromRoute;
+    this.getBook(bookIdFromRoute.toString());
+  }
+  getBook(id: string) {
+    this.booksService.getBookById(id).subscribe((book) => {
+      this.book = book;
+    });
   }
 }

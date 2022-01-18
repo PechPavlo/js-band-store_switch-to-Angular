@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="main">
+  <div class="main-controls">
+    <form class="search-form">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <input matInput type="text" [formControl]="filterBySearch" />
+        <button
+          *ngIf="filterBySearch.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="filterBySearch.setValue('')"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matSuffix *ngIf="!filterBySearch.value">search</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <label htmlFor="price-filter">
+      <select id="price-filter" [formControl]="filterByPrice">
+        <option *ngFor="let range of priceOptions" [value]="range.value">
+          {{ range.title }}
+        </option>
+      </select>
+    </label>
+  </div>
+</div>
+<div *ngIf="books.length > 0; else isloading" class="main-content">
+  <ul class="book-list">
+    <app-card
+      *ngFor="
+        let book of books
+          | catalogFilter: filterBySearch.value
+          | priceFilter: filterByPrice.value
+      "
+      [book]="book"
+    ></app-card>
+  </ul>
+</div>
+<ng-template #isloading>
+  <span>Loading...</span>
+</ng-template>

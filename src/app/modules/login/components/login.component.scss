@@ -1,0 +1,53 @@
+@import '../../../../assets/styles/colors.scss';
+
+.login-page-wrapper {
+    padding-top: 20vh;
+    height     : 100vh;
+
+    h2 {
+        font-size: 30px;
+        color    : $h-color;
+    }
+}
+
+.login-page {
+    height         : 60vh;
+    margin         : auto;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-around;
+
+}
+
+#authorization {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-evenly;
+    height         : 30%;
+
+    label {
+        display       : flex;
+        flex-direction: column;
+        line-height   : 47px;
+        width         : 100%;
+    }
+
+    input {
+        width  : 100%;
+        padding: 5px;
+    }
+
+    button {
+        width        : 100%;
+        font-weight  : bold;
+        border-radius: initial;
+    }
+}
+
+.name-error {
+    text-align: center;
+    font-size : 23px;
+    color     : lightcoral;
+}

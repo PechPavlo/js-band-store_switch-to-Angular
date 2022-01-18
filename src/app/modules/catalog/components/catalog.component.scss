@@ -1,0 +1,66 @@
+.main-controls {
+    display    : flex;
+    align-items: center;
+    flex-wrap  : wrap;
+    margin     : 40px;
+}
+
+.book-seach-lable {
+    img {
+        position: relative;
+        top     : 3.4px;
+        left    : 71px;
+        width   : 1.2rem;
+    }
+}
+
+#book-seach {
+    margin       : 10px 40px;
+    min-width    : 19rem;
+    height       : 2rem;
+    padding      : 1.1rem;
+    padding-left : 2.2rem;
+    font-size    : 1.4rem;
+    border       : 1px solid #5f9ea0;
+    border-radius: 2rem;
+    outline      : none;
+}
+
+// .search-form {
+//     margin       : 10px 40px;
+//     min-width    : 19rem;
+//     height       : 2rem;
+//     padding      : 1.1rem;
+//     padding-left : 2.2rem;
+//     font-size    : 1.4rem;
+//     border       : 1px solid #5f9ea0;
+//     border-radius: 2rem;
+//     outline      : none;
+// }
+
+.book-list {
+    display        : flex;
+    justify-content: space-evenly;
+    flex-wrap      : wrap;
+}
+
+#price-filter {
+    border   : 1px solid #5f9ea0;
+    min-width: 19rem;
+    padding  : 0.3rem;
+    font-size: 1.2rem;
+    margin   : 10px 60px;
+    outline  : none;
+}
+
+.search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width    : 100%;
+}
+
+.example-form-field {
+    width           : 300px;
+    color           : indigo;
+    background-color: blanchedalmond;
+}

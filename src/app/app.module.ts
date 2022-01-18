@@ -3,31 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { DetailsComponent } from './details/details.component';
-import { CartComponent } from './cart/cart.component';
-import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './modules/login/components/login.component';
+import { CartComponent } from './modules/cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const appRoutes: Routes = [
-  { path: '', component: AuthComponent },
-  { path: 'catalog', component: CatalogComponent },
-  { path: 'details/:id', component: DetailsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: '**', component: PageNotFoundComponent },
-];
+import { AuthModule } from './core/auth/auth.module';
+import { CatalogModule } from './modules/catalog/catalog.module';
+import { DetailsModule } from './modules/details/details.module';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    CatalogComponent,
-    DetailsComponent,
+    LoginComponent,
     CartComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AuthModule,
+    CatalogModule,
+    DetailsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+{
+}
