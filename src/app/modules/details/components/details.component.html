@@ -1,4 +1,8 @@
 <app-header></app-header>
-<p>details works!</p>
-<p>Book ID is: {{ bookId }}</p>
-<h4>{{ book?.title }}</h4>
+<div *ngIf="book; else isLoading">
+  <p>Book ID is: {{ book.id }}</p>
+  <h4>{{ book.title }}</h4>
+</div>
+<ng-template #isLoading>
+  <app-loading></app-loading>
+</ng-template>

@@ -14,6 +14,8 @@ import { BooksService } from 'src/app/shared/services/books.service';
 import { HeaderModule } from 'src/app/shared/header/header.module';
 import { CatalogFilterPipe } from './pipes/catalog-filter.pipe';
 import { PriceFilterPipe } from './pipes/price-filter.pipe';
+import { LoadingModule } from 'src/app/shared/loading/loading.module';
+import { CatalogRoutingModule } from './catalog-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { PriceFilterPipe } from './pipes/price-filter.pipe';
   ],
   imports: [
     CommonModule,
+    LoadingModule,
     HeaderModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -32,7 +35,7 @@ import { PriceFilterPipe } from './pipes/price-filter.pipe';
     MatAutocompleteModule,
     MatCardModule,
     MatIconModule,
-    AppRoutingModule,
+    CatalogRoutingModule,
   ],
   exports: [CatalogComponent, CardComponent],
   providers: [BooksService],

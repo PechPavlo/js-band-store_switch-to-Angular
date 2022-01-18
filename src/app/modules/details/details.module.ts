@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './components/details.component';
 import { HeaderModule } from 'src/app/shared/header/header.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { LoadingModule } from 'src/app/shared/loading/loading.module';
 
 @NgModule({
   declarations: [DetailsComponent],
-  imports: [CommonModule, HeaderModule, AppRoutingModule],
+  imports: [CommonModule, HeaderModule, LoadingModule],
   exports: [],
   providers: [],
 })

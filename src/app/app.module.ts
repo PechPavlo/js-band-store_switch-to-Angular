@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './core/auth/auth.module';
 import { CatalogModule } from './modules/catalog/catalog.module';
 import { DetailsModule } from './modules/details/details.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +24,11 @@ import { DetailsModule } from './modules/details/details.module';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule,
     CatalogModule,
     DetailsModule,
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
