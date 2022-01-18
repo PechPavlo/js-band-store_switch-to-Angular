@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from 'src/app/shared/services/books.service';
 import { IBook } from '../../catalog/interfaces/book.interface';
@@ -11,6 +12,7 @@ import { IBook } from '../../catalog/interfaces/book.interface';
 export class DetailsComponent implements OnInit {
   bookId: number = 0;
   book: IBook | undefined;
+  bookCountInCart = new FormControl(1);
 
   constructor(
     private route: ActivatedRoute,

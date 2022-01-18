@@ -1,4 +1,47 @@
 <app-header></app-header>
-<p>details works!</p>
-<p>Book ID is: {{ bookId }}</p>
-<h4>{{ book?.title }}</h4>
+<div class="book-details-container">
+  <div class="book-details">
+    <div class="book-details_image-container">
+      <img [src]="book?.cover" [alt]="book?.title" /><span
+        class="book-details_description"
+        >{{ book?.description }}</span
+      >
+    </div>
+    <div class="book-details-content">
+      <h3 class="book-details_title">
+        {{ book?.title }}
+      </h3>
+      <p class="book-details_subtitle">{{ book?.author }}</p>
+      <div class="book-details_tags-container">
+        <mat-icon>label</mat-icon>
+        <p class="book-details_tags" *ngFor="let tag of book?.tags">
+          {{ tag }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="book-details-cart-container">
+    <div class="book-details-cart">
+      <div class="book-details-cart_price">
+        <p>Price, $</p>
+        <p>{{ book?.price }}</p>
+      </div>
+      <label class="book-count-label" for="book-count"
+        >Count
+        <input
+          type="number"
+          id="book-count"
+          name="book-count"
+          min="1"
+          [formControl]="bookCountInCart"
+      /></label>
+      <div class="book-details-cart_total-price">
+        <p>Total Price, $</p>
+        <p>{{ bookCountInCart.value }}</p>
+      </div>
+      <div class="book-details-cart_footer">
+        <button class="book-details_cart-button">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
