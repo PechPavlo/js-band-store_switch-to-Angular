@@ -5,7 +5,15 @@ import { DetailsComponent } from '../details/components/details.component';
 import { CatalogComponent } from './components/catalog.component';
 
 const catalogRoutes: Routes = [
-  { path: 'catalog', component: CatalogComponent },
+  {
+    path: '',
+    component: CatalogComponent,
+  },
+  {
+    path: ':id',
+    component: DetailsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
