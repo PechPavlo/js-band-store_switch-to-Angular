@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="book-details-container">
+<div class="book-details-container" *ngIf="book; else isLoading">
   <div class="book-details">
     <div class="book-details_image-container">
       <img [src]="book?.cover" [alt]="book?.title" /><span
@@ -45,3 +45,6 @@
     </div>
   </div>
 </div>
+<ng-template #isLoading>
+  <app-loading></app-loading>
+</ng-template>

@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 
 import { IBook } from '../interfaces/book.interface';
 import { BooksService } from 'src/app/shared/services/books.service';
+import { PRICE_OPTIONS } from './constants/priceOptions';
 
 @Component({
   selector: 'app-catalog',
@@ -11,12 +12,7 @@ import { BooksService } from 'src/app/shared/services/books.service';
 })
 export class CatalogComponent implements OnInit {
   books: IBook[] = [];
-  priceOptions = [
-    { value: '0:Infinity', title: 'Price' },
-    { value: '0:25', title: '0 < price < 25' },
-    { value: '25:50', title: '25 < price < 50' },
-    { value: '50:Infinity', title: 'price > 50' },
-  ];
+  priceOptions = PRICE_OPTIONS;
   filterBySearch = new FormControl('');
   filterByPrice = new FormControl(this.priceOptions[0].value);
 

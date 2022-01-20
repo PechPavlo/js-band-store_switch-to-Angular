@@ -10,7 +10,6 @@ import { IBook } from '../../catalog/interfaces/book.interface';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  bookId: number = 0;
   book: IBook | undefined;
   bookCountInCart = new FormControl(1);
 
@@ -21,9 +20,8 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const bookIdFromRoute = Number(routeParams.get('id'));
-    this.bookId = bookIdFromRoute;
-    this.getBook(bookIdFromRoute.toString());
+    const bookIdFromRoute = routeParams.get('id') || '';
+    this.getBook(bookIdFromRoute);
   }
   getBook(id: string) {
     this.booksService.getBookById(id).subscribe((book) => {
